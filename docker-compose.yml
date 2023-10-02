@@ -1,12 +1,20 @@
 version: '3.8'
 services:
-
   fastapi:
     image: sakdahomhuan/fastapi:latest
     container_name: fastapi
     working_dir: /app/
     volumes:
-      - ./app/:/app/
+      - ./fastapi/:/app/
     ports:
       - 8000:80
+    command: /start-reload.sh
+  samgeo:
+    image: sakdahomhuan/samgeo:latest
+    container_name: samgeo
+    working_dir: /app/
+    volumes:
+      - ./app/:/app/
+    ports:
+      - 8001:80
     command: /start-reload.sh

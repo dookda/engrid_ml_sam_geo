@@ -25,7 +25,7 @@ docker run -d --name fastapi -p 80:80 fastapi
 
 ### run exect command in container & hot reload
 ```bash
-docker run --rm -it --name fastapi $(pwd)/app/:/app/ -p 80:80 -v fastapi /start-reload.sh
+docker run --rm -it --name fastapi -v $(pwd)/app/:/app/ -p 80:80 fastapi /start-reload.sh
 ```
 
 ### remove container
@@ -43,4 +43,9 @@ docker push <your docker hub username>/fastapi:latest
 ### save package list to requirements.txt
 ```bash 
 pip freeze > requirements.txt
+```
+
+### docker run samgeo
+```bash
+docker run --rm -it --name samgeo -v $(pwd)/samgeo/:/app/ -v ./samgeo/checkpoints/:/root/.cache/torch/hub/checkpoints/ samgeo
 ```
